@@ -42,7 +42,7 @@ pipeline  {
             steps {
                 echo " ============== stopping all images =================="
                 sh '''
-                docker stop site 2>/dev/null
+                docker stop -f site 2> /dev/null || true
                 '''
             }
         } 
@@ -50,7 +50,7 @@ pipeline  {
             steps {
                 echo " ============== removing all docker containers =================="
                 sh '''
-                docker rm  site  2>/dev/null
+                 docker rm -f site 2> /dev/null || true
                 '''
             }
         }
