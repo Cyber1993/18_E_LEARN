@@ -16,7 +16,7 @@ pipeline  {
             steps {
                 echo 'Creating docker image ...'
                 dir('.'){
-                    sh "docker build --no-cache -t macnaer/site  . "
+                    sh "docker build --no-cache -t yurashupik/site  . "
                 }
             }
         }
@@ -34,7 +34,7 @@ pipeline  {
             steps {
                 echo " ============== pushing image =================="
                 sh '''
-                docker push macnaer/site:latest
+                docker push yurashupik/site:latest
                 '''
             }
         }
@@ -58,7 +58,7 @@ pipeline  {
             steps {
                 echo " ============== start server =================="
                 sh '''
-                docker run -d --restart=always --name website -p 80:80 macnaer/site
+                docker run -d --restart=always --name website -p 80:80 yurashupik/site
                 '''
             }
         }
